@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weekly Quiz 1</title>
+</head>
+<body>
+<script>
+
+    // Quiz Week1
+
+    //Q1
+
+    //const foo = (x) => true;
+    //document.writeln(foo());
+
+    //-> true
+
+    // function foo(){
+    //     return true;
+    // }
+    // document.writeln(foo());
+
+    // the whole function code is shown as () is missing
+
+    //const foo = true;
+    //document.writeln(foo());
+
+    //is an Error as foo (defined a variable) is called like a function
+
+    // function foo() {
+    //     true;
+    // }
+    // document.writeln(foo());
+
+    // return statement missing - undefined
+
+    //const foo = () => true;
+    //document.writeln(foo());
+
+    // ->true
+
+    //function foo() {
+    //    return true;}
+    //document.writeln(foo());
+
+    // -> true
+
+    //const foo = () => true;
+    //document.writeln(foo(1));
+
+    // -> true - it ignored the 1 as it has no parameters to accept
+
+    //Q2
+
+    // function one(x) {
+    //     return x;
+    // }
+    // function two(x, y) {
+    //     return x + y;
+    // }
+    // function three (x, y, z){
+    //     return x + y + z;
+    // }
+    // const functions = [null, one, two, three];
+    // document.writeln(functions[3](1,1));
+
+    // function three needs to take three arguments, but only two are provided -> NaN (not a Number)
+    // The parameter three is undefined as it has no argument.
+
+
+    // const functions1 = [null, one, two, three];
+    // document.writeln(functions[1](1));
+    // -> 1
+
+
+    // const functions2 = [null, one, two, three];
+    // document.writeln(functions[2](1,1,1));
+    // -> 2 The unused third argument is being ignored as only two parameters are defined.
+
+    //Q3a
+
+    //Write a function named "id" that return its argument, such that for all x , id(x) ===x
+
+    function id (x){
+        return x; }
+
+    const x_ = Math.random();
+    document.writeln(id(x_) === x_);
+
+    //Q3b
+
+    //Write a function named "plus" that return the sum of its arguments,
+    //where the arguments are being passed in curried style, such that for all numbers x and y, plus(x)(y) === x + y.
+    // Use the => notation exclusively, i.e. no "function" keyword.
+
+    // defined as a function
+    const plus = (a) => {
+        return (b) => {
+            return a + b;
+        }
+    }
+
+    // defined as no function
+   const plus1 = (a) => (b) => a + b;
+
+    const x_ = Math.random();
+    const y_ = Math.random();
+    const plus3 = plus(3);
+    document.writeln(plus(x_)(y_) === x_ + y_ && plus3(y_) === y_ + 3);
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
