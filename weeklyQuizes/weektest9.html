@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weekly Quiz 9</title>
+</head>
+<body>
+<script>
+
+    document.writeln("Test 9");
+
+    //Q23
+    const idPromise = x => new Promise( resolve => resolve(x));
+
+    const writer = x => {
+        document.writeln(x);
+        return idPromise(x);
+    };
+    const inc = n => n + 1;
+    const filterEven = n => n % 2 === 0 ? n : undefined
+
+    idPromise(1)
+        .then(writer)
+        .then(inc)
+        .then(writer)
+        .then(filterEven)
+        .then(writer)
+
+    // => 122
+
+    // const idPromise = x => new Promise ( resolve => resolve(x));
+    //
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    //
+    // const filterEven = n => n % 2 === 0 ? n : undefined
+    // idPromise(1)
+    //     .then(writer)
+    //     .then(filterEven)
+    //     .then(writer)
+
+    // => 1 undefined
+
+    // const idPromise = x => new Promise( resolve => resolve (x));
+    //
+    // idPromise(1)
+    //     .then( it => document.writeln(it))
+    //     .then( it => document.writeln(it));
+
+    // => 1 undefined
+    // 1 is from the first it call and undefined from the second
+
+    // const idPromise = x => new Promise ( resolve => resolve(x))
+    //
+    // idPromise(1)
+    //     .then( it => { document.writeln(it); return it;})
+    //     .then( it => document.writeln(it))
+
+    // => 1 1
+
+    // const idPromise = x => new Promise (resolve => resolve(x));
+    //
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    //
+    // idPromise(1)
+    //     .then( writer)
+    //     .then( it => it + 1)
+    //     .then( writer)
+
+    // => 1 2
+
+    // const idPromise = x => new Promise (resolve => resolve(x));
+    //
+    // idPromise(1)
+    //     .then( it => it)
+    //     .then( it => document.writeln(it));
+
+    // => 1
+
+    // const idPromise = x => new Promise( resolve => resolve(x));
+    //
+    // document.writeln(idPromise(1));
+
+    // => [object Promise]
+
+    /*
+    The idPromise function is an asynchronous function that returns a Promise.
+    When idPromise(1) is called, it returns a Promise that resolves with the value 1. => happens asynchronously.
+    The document.writeln() function is a synchronous function that writes a string of text to the document.
+    When you pass a Promise to document.writeln(), it doesn't wait for the Promise to resolve.
+    Instead, it immediately converts the Promise to a string and writes that string to the document.
+     */
+
+    // const idPromise = x => new Promise( resolve => resolve(x));
+    //
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    //
+    // const filterEven = n => n % 2 === 0 ? n : undefined;
+    //
+    // idPromise(1)
+    //     .then( writer )
+    //     .then( filterEven)
+    //     .then( writer );
+
+    // => 1 undefined
+
+    // const idPromise = x => new Promise( resolve => resolve(x));
+    //
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    // const filterEven = n => n % 2 === 0 ? n : undefined;
+    //
+    // idPromise(1)
+    //     .then(writer)
+    //     .then(filterEven)
+    //     .then(writer);
+
+    // => no Error
+
+    // const idPromise = x => new Promise (resolve => resolve(x));
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    //
+    // const filterEven = n => { if (n % 2 === 0) return n; else throw Error ("not even")};
+    //
+    // idPromise(1)
+    //     .then( writer )
+    //     .then( filterEven)
+    //     .then( writer)
+    //     .catch(err => {} /*does nothing */ )
+
+    // => 1
+    // Error is caught and code does nothing so does not affect the output
+
+    // const idPromise = x => new Promise( resolve => resolve(x));
+    //
+    // idPromise(1)
+    //     .then( it => { document.writeln(it); return idPromise(it)})
+    //     .then( it => document.writeln(it));
+
+    // 1 1
+
+    // const idPromise = x => new Promise( resolve => resolve(x));
+    //
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    //
+    // const filterEven = n => { if (n % 2 === 0) return n; else throw Error( "not even")};
+    //
+    // idPromise(1)
+    //     .then( writer )
+    //     .then( filterEven )
+    //     .then( writer )
+    //     .catch( err => {} )
+
+    // => 1
+
+    // const idPromise = x => new Promise ( resolve => resolve(x));
+    //
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    //
+    // idPromise(1)
+    //     .then( writer )
+    //     .then( it => document.writeln(it))
+
+    // => 1 1
+
+    // const idPromise = x => new Promise ( resolve => resolve(x));
+    //
+    // const writer = x => {
+    //     document.writeln(x)
+    //     return idPromise(x);
+    // };
+    //
+    // idPromise(1)
+    //     .then( writer )
+    //     .then( it => it + 1)
+    //     .then( writer );
+
+    // => 1 2
+
+    // const idPromise = x => new Promise ( resolve => resolve(x));
+    //
+    // idPromise(1)
+    //     .then( it => document.writeln(it));
+
+    // => 1
+
+    //Q24
+
+    // const idPromise = x => new Promise (resolve => resolve(x));
+    // const failPromise = err => new Promise ( (resolve, reject) => reject(err));
+    //
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    //
+    // const foo = async  i => {
+    //     let x = await  idPromise(i);
+    //     x.then(writer);
+    // };
+    // foo(1);
+
+    // Error Uncaught (in promise) TypeError: x.then is not a function at foo
+    // x is not a promise is a resolved value of the Promise. X is just a number and cannot use .then()
+
+    // const idPromise = x => new Promise( resolve => resolve(x));
+    // const failPromise = err => new Promise( (resolve, reject) => reject(err));
+    //
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    //
+    // const inc = n => idPromise(n + 1);
+    // const filterEven = n => n % 2 === 0 ? idPromise(n): failPromise("not even");
+    //
+    // const foo = async i => {
+    //     let x = await idPromise(i);
+    //     while (x < 4) {
+    //         x = await filterEven(x);
+    //         x = await writer (x);
+    //         x = await inc(x);
+    //     }
+    // };
+    // foo(1);
+
+    // ERROR - Uncaught (in promise) not even
+
+    // const idPromise = x => new Promise( resolve => resolve(x));
+    // const failPromise = err => new Promise( (resolve, reject) => reject (err));
+    //
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    //
+    // const foo = async i => {
+    //     let x = await idPromise(i);
+    //     x = await writer (x);
+    // };
+    //
+    // foo(1);
+
+    // => 1
+
+    // const idPromise = x => new Promise( resolve => resolve (x));
+    // const failPromise = err => new Promise( ( resolve, reject) => reject(err));
+    //
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    //
+    // const inc = n => idPromise(n + 1);
+    // const filterEven = n => n % 2 === 0 ? idPromise(n): failPromise("not even");
+    //
+    // const foo = async i => {
+    //     let x = await idPromise(i);
+    //     while(x < 4){
+    //         x = await filterEven(x).catch( err => {});
+    //         x = await writer(x);
+    //         x = await inc(x);
+    //     }
+    // };
+    // foo(1);
+
+    // undefined - 1 is caught at the filterEven and as a default it returns unedfined
+
+    // const idPromise = x => new Promise( resolve => resolve(x));
+    // const failPromise = err => new Promise( (resolve, reject) => reject(err));
+    //
+    // const foo = async i => {
+    //     let x = await idPromise(i);
+    //     document.writeln(x);
+    // };
+    // foo(1);
+
+    // 1
+
+    // const idPromise = x => new Promise( resolve => resolve (x));
+    // const failPromise = err => new Promise( (resolve, reject) => reject(err));
+    //
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    //
+    // const inc = n => idPromise(n + 1);
+    //
+    // const foo = async i => {
+    //     let x = await  idPromise(i);
+    //     while (x < 4) {
+    //         x = await writer(x);
+    //         x = await inc(x);
+    //     }
+    // };
+    // foo(1);
+
+    /// -> 1 2 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

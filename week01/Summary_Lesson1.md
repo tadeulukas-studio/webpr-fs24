@@ -125,3 +125,75 @@ const foo = (parameter1) => (parameter2) => expression;
 // usage
 foo(argument1)(argument2);
 ```
+
+## Further Input - Video Lambda Calculus I 
+
+**Lambda syntax**:
+
+```javascript
+// definition
+expression:: = variable     // identifier
+    | expression
+expression   // application
+| λ
+variable.expression // abstraction
+| (expression)            // grouping
+
+// abstraction
+λ
+parameters.expression // lambda notation
+parameters => expression // js notation
+```
+
+**Variables**: all immutable\
+**Functions**: all unary => curry functions
+
+```javascript
+ƒab = f(a)(b)
+(ƒa)
+b = (f(a))(b)
+ƒ(ab) = f(a(b))
+```
+
+**Lambda rule**: tries to bind as much as possible to the right side
+
+```javascript
+λa.bx = a => b(x)
+(λa.b)
+x = (a => b)(x)
+λa.λb.x = λab.x = a => b => x
+```
+
+**β-reduction**: replace variables on the left side with expression form the right side. Start from the inside and go
+out
+
+```javascript
+((λa.a)
+λb.λc.b
+)
+(x)
+λe.ƒ
+(λb.λc.b)(x)
+λe.ƒ
+(λc.x)
+λe.ƒ
+x // beta normal form
+```
+
+**Combinator**: lambda functions
+
+- Idiot/ Identity: `I = x => x` with lambda `λa.a` for id
+- Mockingbird: `M = f => f(f)` with lambda `λƒ.ƒƒ`
+- Kestrel: `K = a => b => a` with lambda `λab.a` for `const`
+- Kite: `KI = CK = a => b => b` with lambda `λab.b` for const id
+- Cardinal: `C = f => a => b => f(b)(a)` with lambda `λƒab.ƒba` for flip
+
+**Church Encondins: Boolean operations**:
+
+- TRUE: `T = K = λab.a` with javascript `a => b => a`
+- FALSE: `F = KI = λab.b` with javascript `a => b => b`
+- Negation: `NOT = C = λp.pFT` with javascript `!p = p => p(F)(T)`
+- Conjunction: `AND = λpq.pqF` / `λpq.pqp` with javascript `p && q = p => q => p(q)(F)` / `p => q => p(q)(p)`
+- Disjunction: `OR = λpq.pTq` / `λpq.ppq` with javascript `p || q = p => q => p(T)(q)` / `p => q => p(p)(q)`
+- Exclusive or: `XOR = M = λpq.p(qTF)(qFT)` with javascript `p XOR q = p => q => p(qTF)(qFT)`
+- Boolean equality: `BEQ = λpq.pq(NOT q)` with javascript `p == q = p => q => p(q)(!q)`

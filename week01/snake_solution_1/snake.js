@@ -38,7 +38,7 @@ function start() {
     setInterval(() => {
         nextBoard();
         display(context);
-    }, 1000 / 5);
+    }, 1000 / 5);  // 5 frames per second are being displayed
 }
 
 function nextBoard() {

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weekly Quiz 1</title>
+</head>
+<body>
+<script>
+
+    // Quiz Week2
+
+    //Q4
+
+    // let x = 0;
+    // function two() {
+    //     x = 2;
+    //     return x;
+    // }
+    // two();
+    //
+    // try { // is x in scope? Yes, x is global scope
+    // x;
+    // document.writeln(x === 0)
+    // } catch(e){
+    //     document.writeln(false);
+    // }
+    //
+    // false - x is initially 0, then it is set to 2 in the function two()
+
+    // function two() {
+    //     x = 2;
+    //     return x;
+    // }
+    //
+    // try { // is x in scope?
+    //     x;
+    //     document.writeln(true);
+    // } catch(e){
+    //     document.writeln(false);
+    // }
+    // false - x is not declared before it is used
+
+    // let x = 0; // let and const are block-scoped (they only exist in the block they are declared in)
+    // function two(){
+    //     let x = 2;
+    //     return x;
+    // }
+    // two();
+    // try{
+    //     x;
+    //     document.writeln(x === 0);
+    // } catch(e){
+    //     document.writeln(false);
+    // }
+    // true - x is declared in the global scope and is not changed in the function two()
+
+    // function two(){
+    //     x = 2;
+    //     return x;
+    // }
+    // two();
+    //
+    // try { // is x in scope?
+    //     x;
+    //     document.writeln(true);
+    // } catch(e){
+    //     document.writeln(false);
+    // }
+    // true - x is declared in the global scope and is changed in the function two()
+
+    // function two() {
+    //     let x = 2;
+    //     return x;
+    // }
+    //
+    // try{ // is x in scope?
+    //     x;
+    //     document.writeln(true);
+    // } catch(e){
+    //     document.writeln(false);
+    // }
+    // false - x is not declared before it is used
+
+    // Q5
+
+    // let x = 0;
+    // function two(){
+    //     let x = 2;
+    //     return x;
+    // }
+    // two();
+    // try {  // is x unchanged?
+    //     document.writeln(x === 0)
+    // } catch (e) {
+    //     document.writeln(false);
+    // }
+    // true - x is declared in the global scope and is not changed in the function two()
+
+    // let x = 0;
+    // function two(){
+    //     let x = 2;
+    //     return x;
+    // }();
+    // try {  // is x unchanged?
+    //     document.writeln(x === 0)
+    // } catch (e) {
+    //     document.writeln(false);
+    // }
+    // Error - the function declaration need to be wrapped in a block to be executed
+
+    // x = 0;
+    // ( () => {
+    //     let x = 2;
+    //     return x;
+    // }) ();
+    //
+    // try {
+    //     document.writeln(x === 0);
+    // } catch(e) {
+    //     document.writeln(false);
+    // }
+    //true - x is declared in the global scope and is not the same scope as in the function
+
+    // let x = 0;
+    // (function () {
+    //     let x = 2;
+    //     return x;
+    // })();
+    //
+    // try {
+    //     document.writeln(x === 0);
+    // } catch(e) {
+    //     document.writeln(false);
+    // }
+    // true - x is declared in the global scope and is not the same scope as in the function
+
+    // let x = 0;
+    // (function two() {
+    //     let x = 2;
+    //     return x;
+    // })();
+    //
+    // try {
+    //     document.writeln(x === 0);
+    // } catch(e) {
+    //     document.writeln(false);
+    // }
+    // true - x is declared in the global scope and is not the same scope as in the function
+
+    // let x = 0;
+    // ( () => {
+    //     let x = 2;
+    //     return x;
+    // }) ();
+    // try{
+    //     document.writeln(x === 0);
+    // } catch(e) {
+    //     document.writeln(false);
+    //}
+    // true - x is declared in the global scope and is not the same scope as in the function
+
+    //Q6
+
+    // const id = x => x;
+    // const a1 = y => id(y);
+    // const a2 = y => y // Given 'id' a2 is a proper beta reduction of a1
+
+    // const id1 = x => x;
+    // const id2 = y => y // id1 and id2 are the same
+
+    // const id = x => x;
+    // const a1 = y => id(y);
+    // const a2 = y => y; // No - a1 is not a proper beta expansion of a2 (no additional complexity)
+
+    // const F1 =  x => (x => x);
+    // const F2 = y => (x => y); // not alpha equivalent
+
+    // const id = x => x;
+    // const konst = x => y => x;
+    // const F1 = x => y => konst(id)(x)(y);
+    // const F2 = x => konst(id)(x);
+    // const F3 = konst(id);
+
+    //Q6a
+    // const id = y => y; //Given
+    // const fst = x => y => x; //Given
+    // const snd = fst(id); // Should return like snd = x => y => y
+    //
+    // const x_ = Math.random();
+    // const y_ = Math.random();
+    // document.writeln(snd(x_)(y_) === y_);
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
