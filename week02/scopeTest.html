@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scope Tests</title>
+</head>
+<body>
+    <script>
+
+        const test = x => document.writeln( String(x));
+
+        let x =  0;
+        function foo () {
+            let x = 1;                      // not the same x as in the outer scope (shadowing)
+            document.writeln(String(x));
+        }
+        foo(); // 1
+        document.writeln(String(x)); // 0
+
+        // without let it will produce 1 1
+        // using a var will be undefined 0
+
+        (function () {
+            let x = 1;
+            document.writeln(String(x));
+        })(); //function expression
+        document.writeln(String(x)); //immediately invoked
+
+        (() => {        // IIFE for a local scope
+            let x = 1;  // does not accidentally override outer scope
+            document.writeln(String(x));
+        })(); //function expression with arrow function
+        document.writeln(String(x)); //immediately invoked
+
+
+        // lambda calculus
+        const id    = x => x;
+        const Konst = x => y => x;
+        const Kite = x => y => y    // Kite(id)
+
+
+        // const Kite = x => y => y;        // beta expand with id
+        // const Kite = x => y => id(y);    // eta reduce
+        // const Kite = x => id;            // beta expand with Konst
+        // const Kite = x => Konst(id)(x);  // eta reduce
+
+        test( id(id) === id);
+        test( Konst(id)(undefined) === id); // with Beta Reduction - (id) == id
+        test( Kite(undefined)(id) === id);  // with Beta Reduction - (id) == id
+
+    </script>
+</body>
+</html>
+

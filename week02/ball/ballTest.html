@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ball Test</title>
+</head>
+<body>
+
+<h1>Testing Ball</h1>
+
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<script src="ball.js">
+</script>
+<pre>
+
+<script>
+window.onload = function() {
+
+    let canvas = document.getElementById('canvas');
+    let ok = [];
+
+    //Initial conditions
+    nextBoard();
+    ok.push(old.x === 20 && old.y === 0 && ball.dx === 5 && ball.dy === 1.1 * 1.1);
+
+    //After one step, ball has moved
+    old = {x: ball.x, y: ball.y, dx: ball.dx, dy: ball.dy}; // Update old to the current state of ball
+    nextBoard();
+    ok.push(ball.x !== 20 || ball.y !== 0 || ball.dx !== 5 || ball.dy !== 1.1 * 1.1);
+
+    //Before any changes, ball dx is 5
+    ok.push(ball.dx === 5);
+
+    //After changing dx ball dx has changed
+    ball.dx = 6;
+    nextBoard();
+    ok.push(ball.dx === 6);
+
+    //Before any changes, ball dy is 1.1 * 1.1
+    ok.push(ball.dy === 1.1 * 1.1);
+
+    //After changing dy, ball dy has changed
+    ball.dy = 1.2;
+    nextBoard();
+    ok.push(ball.dy === 1.2 * 1.1);
+
+    // test result report
+    if (ok.every(elem => elem)) {
+        document.writeln("All " + ok.length + " tests ok.");
+    } else {
+        document.writeln("Not all tests ok! Details:");
+        for (let i = 0; i < ok.length; i++) {
+            if (ok[i]) {
+                document.writeln("Test " + i + " ok");
+            } else {
+                document.writeln("Test " + i + " failed");
+            }
+        }
+    }
+}
+</script>
+
+</pre>
+</body>
+</html>
