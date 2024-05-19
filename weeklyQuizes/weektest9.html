@@ -10,21 +10,21 @@
     document.writeln("Test 9");
 
     //Q23
-    const idPromise = x => new Promise( resolve => resolve(x));
-
-    const writer = x => {
-        document.writeln(x);
-        return idPromise(x);
-    };
-    const inc = n => n + 1;
-    const filterEven = n => n % 2 === 0 ? n : undefined
-
-    idPromise(1)
-        .then(writer)
-        .then(inc)
-        .then(writer)
-        .then(filterEven)
-        .then(writer)
+    // const idPromise = x => new Promise( resolve => resolve(x));
+    //
+    // const writer = x => {
+    //     document.writeln(x);
+    //     return idPromise(x);
+    // };
+    // const inc = n => n + 1;
+    // const filterEven = n => n % 2 === 0 ? n : undefined
+    //
+    // idPromise(1)
+    //     .then(writer)
+    //     .then(inc)
+    //     .then(writer)
+    //     .then(filterEven)
+    //     .then(writer)
 
     // => 122
 
@@ -317,15 +317,26 @@
 
     /// -> 1 2 3
 
+    //Q24a
 
+    const NullSafe = x => {
+        const isNullSafe = y => y && y.then;
+        const maywrap = y =>  NullSafe(y) && !isNullSafe(y) ;
+        return {
+            then: fn => x && maywrap(fn(x))
+        }
+    };
 
+    NullSafe(1).then(console.log);
+    NullSafe(null).then(console.log);
+    NullSafe(2).then( x => null).then(console.log);
 
-
-
-
-
-
-
+    NullSafe(x_)
+        .then( x => x * 2)
+        .then( x => NullSafe(x))
+        .then( x => y_ = x + 1)
+        .then( x => null)
+        .then( x => x.mustNotbeCalled)  !== null && y_ === x_ * 2 + 1;
 
 
 
