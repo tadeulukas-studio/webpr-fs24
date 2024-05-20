@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Tests</title>
+</head>
+<body>
+
+<script>
+
+    // Possible implementation
+    [
+        "function",
+        "lambda",
+    ].forEach( name => {
+        document.writeln("<script src='"+name+"/"+name+".js\'><" + "/script>"); // otherwise the end tag will be treated as the end of the script tag - error
+    });
+</script>
+
+<script>
+    // Possible implementation
+
+    const names = [         //maintaining our test suite
+        "function" +
+        "lambda",
+    ];
+    name.forEach( name => {
+        document.writeln('<script src = "${name}/${name}"><'+ '/script>');
+        document.writeln('<script src = "${name}/${name}"><'+ '/script>');
+    });
+
+</script>
+</body>
+</html>

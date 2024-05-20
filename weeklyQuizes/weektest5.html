@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weekly Quiz 1</title>
+</head>
+<body>
+<script>
+
+    //Quiz Week 5
+
+    //Q11
+
+    // Scripting can be used for:
+
+    // Compile time safety - No because it is not a compiled language
+
+    //Distribution code for execution on other maschines - Yes
+
+    //High-end tool support (IDE) - Yes
+
+    //Dynamic business rules - Yes
+
+    //Evaluation of dynamically composed strings - Yes
+
+    //Evaluating user-defined functions - Yes
+
+    //Safe, context-free refactoring of large codebases - No, because it is not a compiled language
+
+    //Test automation - Yes
+
+    //Safe, enforced interfaces between developers - No, because it is not a compiled language
+
+    //Self-modifying code - Yes
+
+    //Safe updates to new versions of code dependencies - No, because it is not a compiled language
+
+    //Q10a
+
+    // let factor_ = 0.2;
+    // const e = {revenue: 1000, bonus: null};
+    //
+    // const bonusCalculation = (employee) => {
+    //     eval("employee.bonus = employee.revenue * factor_");
+    // }
+    // bonusCalculation(e);
+    // document.writeln(e.bonus === e.revenue * 0.2);
+
+    //Q10b
+    let factor_ = 0.2;
+    const e = {revenue: 1000, bonus: null};
+
+
+    const bonusCalculation = (employee) => {
+        Function("employee", "employee.bonus = employee.revenue * factor_")(employee);
+        return employee;
+    }
+
+    bonusCalculation(e);
+
+    document.writeln(e.bonus === e.revenue * 0.2);
+
+
+
+</script>
+</body>
+</html>
+
+
+

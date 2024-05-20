@@ -33,7 +33,7 @@ console.log(ary);
 console.table(ary);
 ```
 
-**Log level**: Use to filter the logged outputs. Show all levels $≥ logLevel$
+**Log level**: Using to filter the logged outputs. Show all levels $≥ logLevel$
 
 ```javascript
 
@@ -61,9 +61,9 @@ const twoTimes = times(2);
 
 **Map**: execute a function or do a unary operation on each value, partial application
 
-- outer type stays same (array, object, function,...)
-- inner type can change (string -> number,...)
-- number elements stay same
+- outer type remains (array, object, function,...)
+- inner type can change (string -> number,...) 
+- number elements remains the same
 
 ```javascript
 
@@ -146,19 +146,20 @@ callbackFunction(varName);
 **Capturing scope (closure)**: private variables for functions, boxed functions
 
 ```javascript
+
 // definition
-const func = (function (paramsOuter) {
+const func = (function (parameterOuter) {
     let localVar = value;
-    return function (paramsInner) {
+    return function (parameterInner) {
         // do something
     };
-})(argsOuter);
+})(argumentsOuter);
 
 // usage
-func(argsInner);
+func(argumentsInner);
 ```
 
-**Higher-order functions**: takes other function as arguments or returns function
+**Higher-order functions**: taking other functions as arguments or returns function
 
 ```javascript
 // definition
@@ -169,16 +170,16 @@ function callbackFunction(callbackFunc) {
 // or
 function callbackFunction2() {
     // do somthing
-    return func;
+    return function;
 }
 
 // use
-callbackFunction(funcName);
+callbackFunction(functionName);
 // or
-callbackFunction2()(argsForFunc);
+callbackFunction2()(argsForFunction);
 ```
 
-**Constructors (returning functions)**: creates a self defined object, using keyword `new` in call
+**Constructors (returning functions)**: creates a self-defined object, using keyword `new` in call
 
 ```javascript
 // definition
